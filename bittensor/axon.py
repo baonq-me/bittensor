@@ -370,7 +370,7 @@ class axon:
         self.app = FastAPI()
         log_level = "trace" if bittensor.logging.__trace_on__ else "critical"
         self.fast_config = uvicorn.Config(
-            self.app, host="0.0.0.0", port=self.config.axon.port, log_level=log_level
+            self.app, host=self.config.axon.ip, port=self.config.axon.port, log_level=log_level
         )
         self.fast_server = FastAPIThreadedServer(config=self.fast_config)
         self.router = APIRouter()
